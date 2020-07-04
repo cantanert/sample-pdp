@@ -42,6 +42,42 @@
           color: black
           font-size: 25px
           font-weight: 600
+    .product-selectable-attributes
+      .selectable-attribute
+        display: flex
+        align-items: center
+        margin-top: 10px
+        .attribute-name
+          flex: 1
+          display: flex
+          align-items: center
+          position: relative
+          span:after
+            content: ":"
+            position: absolute
+            right: 0
+        .attribute-options
+          flex: 5
+          display: flex
+          padding-left: 5px
+          .option
+            display: flex
+            flex-direction: column
+            flex-basis: 33%
+            justify-content: center
+            align-items: center
+            border: 1px solid $theme-light-gray
+            border-radius: 2px
+            margin-left: 5px
+            padding: 5px
+            height: 30px
+            &.selected
+              border: 3px solid $theme-dark-gray
+            p
+              margin: 0
+              font-size: 13px
+              color: #000
+              font-weight: 500
 
 
 @media screen and (max-width: $width-small-max)
