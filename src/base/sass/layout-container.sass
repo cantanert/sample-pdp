@@ -1,0 +1,32 @@
+$width-small-max: 767px
+$width-medium-min: 768px
+$width-medium-max: 979px
+$width-large-min: 980px
+$width-large-max: 1199px
+$width-xlarge-min: 1200px
+
+.container
+  margin-right: auto
+  margin-left: auto
+  height: 200px
+
+@media screen and (max-width: $width-small-max)
+  .container
+    background-color: red
+    min-width: 320px
+    max-width: 480px
+
+@media screen and (min-width: $width-medium-min) and (max-width: $width-medium-max)
+  .container
+    background-color: blue
+    width: 768px
+
+@media screen and (min-width: $width-large-min) and (max-width: $width-large-max)
+  .container
+    background-color: green
+    width: 980px
+
+@media screen and (min-width: $width-xlarge-min)
+  .container
+    background-color: purple
+    width: 1200px
