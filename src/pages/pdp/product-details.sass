@@ -8,7 +8,6 @@
 
   .product-images-wrapper
     padding: 0 10px
-    border: 1px solid red
     .product-thumbnail-images
       display: flex
       overflow: auto
@@ -34,5 +33,8 @@
             margin-right: 5px
 
 
-  .product-content-wrapper
-    border: 1px solid blue
+@media screen and (max-width: $width-small-max)
+  .product-details-wrapper
+    flex-direction: column
+    .product-content-header
+      margin-top: 15px
