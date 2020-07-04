@@ -1,5 +1,6 @@
 import React from "react";
 import {FiTruck} from "react-icons/fi"
+import ProductActionButtons from "../product-action-buttons/ProductActionButtons";
 
 const ProductPriceAndShipmentInfo = () => {
   return (
@@ -7,10 +8,15 @@ const ProductPriceAndShipmentInfo = () => {
           <div className="product-total-price-title">
               <p>Toplam</p>
           </div>
-          <div className="product-price-and-shipment">
-              <p className="price">300.000,00 TL</p>
-              <div className="shipment">
-                  <p><span className="truck-icon"><FiTruck/></span> Kargo Ücreti: <span className="shipment-type">Alıcı Öder</span></p>
+          <div className="product-total-price-wrapper">
+              <div className="product-price-and-shipment">
+                  <p className="price">300.000,00 TL</p>
+                  <div className="shipment">
+                      <p><span className="truck-icon"><FiTruck/></span> Kargo Ücreti: <span className="shipment-type">Alıcı Öder</span></p>
+                  </div>
+              </div>
+              <div className="product-action-buttons-wrapper">
+                  <ProductActionButtons/>
               </div>
           </div>
       </div>

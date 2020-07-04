@@ -4,7 +4,6 @@ import ProductMinMaxInformations from "../product-min-max-informations/ProductMi
 import ProductSelectableAttributes from "../product-selectable-attributes/ProductSelectableAttributes";
 import ProductBaremsAndQuantities from "../product-barems-and-quantities/ProductBaremsAndQuantities";
 import ProductPriceAndShipmentInfo from "../product-price-and-shipment-info/ProductPriceAndShipmentInfo";
-import ProductActionButtons from "../product-action-buttons/ProductActionButtons";
 
 const ProductContent = () => {
     return (
@@ -14,7 +13,6 @@ const ProductContent = () => {
             <ProductSelectableAttributes/>
             <ProductBaremsAndQuantities/>
             <ProductPriceAndShipmentInfo/>
-            <ProductActionButtons/>
         </div>
     )
 };
