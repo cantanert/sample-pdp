@@ -2,8 +2,10 @@
   display: flex
   margin-top: 50px
   .product-images-wrapper, .product-content-wrapper
+    padding: 0 10px
     flex-basis: 50%
     box-sizing: border-box
+
   .product-images-wrapper
     padding: 0 10px
     border: 1px solid red
@@ -15,7 +17,22 @@
       .thumbnail
         width: 20%
         padding-right: 5px
-      img
+
+  .product-content-wrapper
+    .product-content-header
+      .product-title
+        font-size: 30px
+        font-weight: 500
+        margin: 0 0 10px 0
+        span
+          margin-bottom: 10px
+      .product-interactions
+        .product-comment-count
+          color: $theme-blue
+          .product-overall
+            color: $theme-yellow
+            margin-right: 5px
+
 
   .product-content-wrapper
     border: 1px solid blue
