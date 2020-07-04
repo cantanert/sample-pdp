@@ -2,7 +2,6 @@
   display: flex
   margin-top: 50px
   .product-images-wrapper, .product-content-wrapper
-    padding: 0 10px
     flex-basis: 50%
     box-sizing: border-box
 
@@ -18,7 +17,9 @@
         padding-right: 5px
 
   .product-content-wrapper
+    padding: 0 0 0 10px
     .product-content-header
+      padding: 0 10px
       .product-title
         font-size: 30px
         font-weight: 500
@@ -32,6 +33,7 @@
             color: $theme-yellow
             margin-right: 5px
     .product-min-max-infos
+      padding: 0 10px
       p
         color: $theme-gray
         &.price-per-piece
@@ -43,6 +45,7 @@
           font-size: 25px
           font-weight: 600
     .product-selectable-attributes
+      padding: 0 10px
       .selectable-attribute
         display: flex
         align-items: center
@@ -52,12 +55,13 @@
           display: flex
           align-items: center
           position: relative
+          font-size: 14px
           span:after
             content: ":"
             position: absolute
             right: 0
         .attribute-options
-          flex: 5
+          flex: 4
           display: flex
           padding-left: 5px
           .option
@@ -78,6 +82,72 @@
               font-size: 13px
               color: #000
               font-weight: 500
+    .product-barems-and-quantity
+      padding: 0 10px
+      background-color: $theme-gray-background
+      .product-barems
+        display: flex
+        margin-top: 10px
+        padding: 10px 0
+        .barem-prices-title
+          flex: 1
+          position: relative
+          font-size: 14px
+          p
+            margin-bottom: 0
+            &:first-child::after
+              content: ":"
+              position: absolute
+              right: 0
+            &:not(:first-child)
+              margin-top: 0
+        .barem-prices-wrapper
+          flex: 4
+          display: flex
+          flex-wrap: wrap
+          padding-left: 5px
+          .barem-price
+            width: 20%
+            border-right: 1px solid $theme-gray
+            margin-left: 5px
+            padding: 5px
+            height: 30px
+            margin-top: 5px
+            p
+              margin: 0
+              font-size: 13px
+              color: #000
+              font-weight: 500
+            &.selected
+              background-color: $theme-yellow-background
+      .product-quantity
+        display: flex
+        justify-content: center
+        align-items: center
+        .product-quantity-title
+          flex: 1
+          font-size: 14px
+          position: relative
+          p:after
+            content: ":"
+            position: absolute
+            right: 0
+        .product-quantity-input
+          flex: 4
+          padding-left: 10px
+          position: relative
+          input
+            height: 30px
+            width: 70px
+            margin-right: 10px
+            text-align: center
+            font-size: 16px
+          span.stock-quantity
+            position: absolute
+            right: 0
+            top: 7px
+            color: $theme-green
+
 
 
 @media screen and (max-width: $width-small-max)
