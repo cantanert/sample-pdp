@@ -1,45 +1,45 @@
 import React from "react";
+import {connect} from 'react-redux';
+import SelectableAttribute from "../selectable-attribute/SelectableAttribute";
 
-const ProductSelectableAttributes = () => {
+const ProductSelectableAttributes = (props) => {
+
+    let {selectableAttributes} = props.productDetailState;
+
+    const selectableAttributeOptionRenderer = (options) => {
+      return  options.map((option,index)=>{
+          if(index === 0) {
+              return (
+                  <button className="option selected">{option}</button>
+              )
+          } else {
+              return (
+                  <button className="option">{option}</button>
+              )
+          }
+
+      });
+    };
+
+    const selectableAttributeRenderer = (attributes) => {
+        return attributes.map((attr) => {
+            return (
+                <SelectableAttribute>{attr}</SelectableAttribute>
+            )
+        });
+    };
+
     return (
         <div className="product-selectable-attributes">
-            <div className="selectable-attribute">
-                <div className="attribute-name">
-                    <span>Hafıza</span>
-                </div>
-                <div className="attribute-options">
-                    <div className="option selected">
-                        <p>64 GB</p>
-                        <p>Ücretsiz</p>
-                    </div>
-                    <div className="option">
-                        <p>128 GB</p>
-                        <p>Ücretsiz</p>
-                    </div>
-                    <div className="option">
-                        <p>256 GB</p>
-                    </div>
-                </div>
-            </div>
-            <div className="selectable-attribute">
-                <div className="attribute-name">
-                    <span>Renk</span>
-                </div>
-                <div className="attribute-options">
-                    <div className="option">
-                        <p>Rose Gold</p>
-                    </div>
-                    <div className="option selected">
-                        <p>Black</p>
-
-                    </div>
-                    <div className="option">
-                        <p>Silver</p>
-                    </div>
-                </div>
-            </div>
+            {selectableAttributeRenderer(selectableAttributes)}
         </div>
     )
 };
 
-export default ProductSelectableAttributes;
+const mapStateToProps = (state) => {
+    return {
+        productDetailState : state.productDetailReducer
+    }
+};
+
+export default connect(mapStateToProps)(ProductSelectableAttributes);

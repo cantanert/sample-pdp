@@ -1,6 +1,31 @@
 import React from "react";
+import {connect} from 'react-redux';
 
-const ProductBaremsAndQuantities = () => {
+const ProductBaremsAndQuantities = (props) => {
+    const { baremList } = props.productDetailState;
+    const baremListLength = baremList.length;
+
+    const baremPriceRenderer = (list) => {
+        return list.map((item, index)=> {
+            if(baremListLength === index + 1){
+                return (
+                    <div className="barem-price" key={index}>
+                        <p>{item.minimumQuantity}+</p>
+                        <p>{item.price} TL</p>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="barem-price" key={index}>
+                        <p>{item.minimumQuantity} - {item.maximumQuantity}</p>
+                        <p>{item.price} TL</p>
+                    </div>
+                )
+            }
+        });
+    };
+
+
     return (
         <div className="product-barems-and-quantity">
             <div className="product-barems">
@@ -9,38 +34,7 @@ const ProductBaremsAndQuantities = () => {
                     <p>(Adet)</p>
                 </div>
                 <div className="barem-prices-wrapper">
-                    <div className="barem-price">
-                        <p>100 - 199</p>
-                        <p>1300 TL</p>
-                    </div>
-                    <div className="barem-price selected">
-                        <p>200 - 299</p>
-                        <p>880 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
-                    <div className="barem-price">
-                        <p>300 - 399</p>
-                        <p>550 TL</p>
-                    </div>
+                    {baremPriceRenderer(baremList)}
                 </div>
             </div>
             <div className="product-quantity">
@@ -57,4 +51,10 @@ const ProductBaremsAndQuantities = () => {
     )
 };
 
-export default ProductBaremsAndQuantities;
+const mapStateToProps = (state) => {
+    return {
+        productDetailState : state.productDetailReducer
+    }
+};
+
+export default connect(mapStateToProps)(ProductBaremsAndQuantities);

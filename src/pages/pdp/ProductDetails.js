@@ -8,10 +8,20 @@ import {
     setTitleActionCreator,
     setSelectableAttributesActionCreator,
     setProductVariantsActionCreator,
-    setBaremListActionCreator
+    setBaremListActionCreator,
+    setActiveVariantActionCreator
 } from "../../redux/actions/pdp/productActions";
 
 class ProductDetails extends React.Component{
+
+    getMockedResponseAndInitializeState = () => {
+        let {productTitle,selectableAttributes,productVariants,baremList} = mockedProductResponse;
+        this.props.setTitle(productTitle);
+        this.props.setSelectableAttributes(selectableAttributes);
+        this.props.setProductVariants(productVariants);
+        this.props.setBaremList(baremList);
+        this.props.setActiveVariant(productVariants[0]);
+    };
 
 
     render() {
@@ -24,11 +34,7 @@ class ProductDetails extends React.Component{
     }
 
     componentWillMount() {
-        let {productTitle,selectableAttributes,productVariants,baremList} = mockedProductResponse;
-        this.props.setTitle(productTitle);
-        this.props.setSelectableAttributes(selectableAttributes);
-        this.props.setProductVariants(productVariants);
-        this.props.setBaremList(baremList);
+        this.getMockedResponseAndInitializeState();
     }
 }
 
@@ -51,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setBaremList: (barems) => {
             dispatch(setBaremListActionCreator(barems))
+        },
+        setActiveVariant: (variant) => {
+            dispatch(setActiveVariantActionCreator(variant))
         }
     }
 };

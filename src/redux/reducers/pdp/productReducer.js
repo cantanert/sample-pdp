@@ -4,7 +4,8 @@ const initialState = {
     productTitle : "",
     selectableAttributes : [],
     productVariants : [],
-    baremList: []
+    baremList: [],
+    activeVariant: {}
 };
 
 const productDetailReducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ const productDetailReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 baremList: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_ACTIVE_VARIANT:
+            state = {
+                ...state,
+                activeVariant: action.payload
             };
             break;
         default:

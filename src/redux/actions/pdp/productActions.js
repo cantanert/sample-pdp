@@ -28,3 +28,10 @@ export const setBaremListActionCreator = (barems) => {
         payload: barems
     }
 };
+
+export const setActiveVariantActionCreator = (variant) => {
+    return {
+        type: productStaticData.reduxActions.SET_ACTIVE_VARIANT,
+        payload: variant
+    }
+};
