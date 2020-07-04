@@ -1,28 +1,12 @@
 import React from "react";
+import ProductMainImage from "../product-main-image/ProductMainImage";
+import ProductThumbnailImages from "../product-thumbnail-images/ProductThumbnailImages";
 
 const ProductImages = () => {
     return(
         <div className="product-images-wrapper">
-            <div className="main-image">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
-            <div className="thumbnail-images">
-                <div className="thumbnail">
-                    <img src="https://via.placeholder.com/500x500" width="100%"/>
-                </div>
-                <div className="thumbnail">
-                    <img src="https://via.placeholder.com/500x500" width="100%"/>
-                </div>
-                <div className="thumbnail">
-                    <img src="https://via.placeholder.com/500x500" width="100%"/>
-                </div>
-                <div className="thumbnail">
-                    <img src="https://via.placeholder.com/500x500" width="100%"/>
-                </div>
-                <div className="thumbnail">
-                    <img src="https://via.placeholder.com/500x500" width="100%"/>
-                </div>
-            </div>
+            <ProductMainImage/>
+            <ProductThumbnailImages/>
         </div>
     )
 };
