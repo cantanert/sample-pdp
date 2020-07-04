@@ -6,7 +6,7 @@
     box-sizing: border-box
 
   .product-images-wrapper
-    padding: 0 10px
+    padding: 0 20px
     .product-thumbnail-images
       display: flex
       overflow: auto
@@ -17,9 +17,8 @@
         padding-right: 5px
 
   .product-content-wrapper
-    padding: 0 0 0 10px
     .product-content-header
-      padding: 0 10px
+      padding: 0 15px
       .product-title
         font-size: 30px
         font-weight: 500
@@ -33,7 +32,7 @@
             color: $theme-yellow
             margin-right: 5px
     .product-min-max-infos
-      padding: 0 10px
+      padding: 0 15px
       p
         color: $theme-gray
         &.price-per-piece
@@ -45,11 +44,11 @@
           font-size: 25px
           font-weight: 600
     .product-selectable-attributes
-      padding: 0 10px
+      padding: 0 15px
       .selectable-attribute
         display: flex
         align-items: center
-        margin-top: 10px
+        margin-top: 20px
         .attribute-name
           flex: 1
           display: flex
@@ -83,11 +82,11 @@
               color: #000
               font-weight: 500
     .product-barems-and-quantity
-      padding: 0 10px
+      padding: 0 15px
+      margin-top: 20px
       background-color: $theme-gray-background
       .product-barems
         display: flex
-        margin-top: 10px
         padding: 10px 0
         .barem-prices-title
           flex: 1
@@ -124,6 +123,7 @@
         display: flex
         justify-content: center
         align-items: center
+        padding: 10px 0
         .product-quantity-title
           flex: 1
           font-size: 14px
@@ -147,6 +147,32 @@
             right: 0
             top: 7px
             color: $theme-green
+    .product-price-and-shipment-info
+      display: flex
+      padding: 0 15px
+      .product-total-price-title
+        flex: 1
+        position: relative
+        p:after
+          content: ":"
+          position: absolute
+          right: 0
+      .product-price-and-shipment
+        flex: 4
+        font-size: 14px
+        padding-left: 10px
+        .price
+          font-size: 25px
+          font-weight: 600
+          margin: 10px 0
+        .shipment
+          p
+            margin: 0
+          .shipment-type
+            color: $theme-blue
+          .truck-icon
+            vertical-align: middle
+
 
 
 
