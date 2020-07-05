@@ -1,20 +1,20 @@
 import productDetailsStaticData from "../../../statics/product-detail-static-data"
+import mockedData from "../../../statics/mocked-product-response"
 
 const initialState = {
-    productTitle : "",
-    selectableAttributes : [],
-    productVariants : [],
-    baremList: [],
-    initialVariant: {},
-    activeImage: "",
-    activeVariant: null,
+    productTitle : mockedData.productTitle,
+    selectableAttributes : mockedData.selectableAttributes,
+    productVariants : mockedData.productVariants,
+    baremList: mockedData.baremList,
+    initialVariant: mockedData.productVariants[0],
+    activeImage: mockedData.productVariants[0].images[0],
+    activeVariant: mockedData.productVariants[0],
     selectedCount: null,
     piecePrice: null,
-    quantityBaremMin: null,
-    quantityBaremMax: null,
-    priceBaremMin: null,
-    priceBaremMax: null,
-    minSaleQuantity: null,
+    quantityBaremMin: mockedData.baremList[0].minimumQuantity,
+    quantityBaremMax: mockedData.baremList[2].maximumQuantity,
+    priceBaremMin: mockedData.baremList[0].price,
+    priceBaremMax: mockedData.baremList[2].price,
     selectedColor: null,
     selectedSize: null,
     availableSizes: [],
@@ -131,12 +131,6 @@ const productDetailReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 priceBaremMax: action.payload
-            };
-            break;
-        case productDetailsStaticData.reduxActions.SET_MIN_SALE_QUANTITY:
-            state = {
-                ...state,
-                minSaleQuantity: action.payload
             };
             break;
         default:

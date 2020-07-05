@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 
 const ProductMinMaxInformations = (props) => {
 
-    let {priceBaremMin, priceBaremMax, minSaleQuantity} = props.productDetailState;
+    let {priceBaremMin, priceBaremMax, quantityBaremMin} = props.productDetailState;
 
     return (
         <div className="product-min-max-infos">
-            <p className="price-per-piece"><span>{priceBaremMin + " TL - " + priceBaremMax +" TL"}</span> / Adet</p>
-            <p className="min-quantity">{minSaleQuantity} Adet (Minimum Sipariş Adedi)</p>
+            <p className="price-per-piece"><span>{priceBaremMax + " TL - " + priceBaremMin +" TL"}</span> / Adet</p>
+            <p className="min-quantity">{quantityBaremMin} Adet (Minimum Sipariş Adedi)</p>
         </div>
     )
 };
