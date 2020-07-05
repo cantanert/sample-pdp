@@ -1,25 +1,44 @@
 import React from "react";
+import {connect} from "react-redux"
+import {setActiveImageActionCreator, setTitleActionCreator} from "../../../redux/actions/pdp/productActions"
 
-const ProductThumbnailImages = () => {
+const ProductThumbnailImages = (props) => {
+
+    let {activeVariant} = props.productDetailState;
+
+    const thumbnailClickHandler = url => {
+        props.setActiveImage(url);
+    };
+
+    const thumbnailImageRenderer = () => {
+        return activeVariant.images.map((url,index)=>{
+            return (
+                <div className="thumbnail">
+                    <img src={url} width="100%" onClick={() => thumbnailClickHandler(url)}/>
+                </div>
+            )
+        });
+    };
+
     return (
         <div className="product-thumbnail-images">
-            <div className="thumbnail">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
-            <div className="thumbnail">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
-            <div className="thumbnail">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
-            <div className="thumbnail">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
-            <div className="thumbnail">
-                <img src="https://via.placeholder.com/500x500" width="100%"/>
-            </div>
+            {thumbnailImageRenderer()}
         </div>
     )
 };
 
-export default ProductThumbnailImages;
+const mapStateToProps = (state) => {
+    return {
+        productDetailState : state.productDetailReducer
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setActiveImage: (imageURL) => {
+            dispatch(setActiveImageActionCreator(imageURL))
+        },
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductThumbnailImages);

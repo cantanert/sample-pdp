@@ -35,3 +35,10 @@ export const setActiveVariantActionCreator = (variant) => {
         payload: variant
     }
 };
+
+export const setActiveImageActionCreator = (imageURL) => {
+    return {
+        type: productStaticData.reduxActions.SET_ACTIVE_IMAGE,
+        payload: imageURL
+    }
+};
