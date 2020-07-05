@@ -14,16 +14,16 @@ import {
 
 const SelectableAttribute = (props) => {
 
-
-    let {activeVariant, productVariants, availableSizes, activeColorIndex, activeSizeIndex, selectedColor, selectedSize } = props.productDetailState;
+    let { activeVariant,
+        productVariants,
+        availableSizes,
+        activeColorIndex,
+        activeSizeIndex,
+        selectedColor } = props.productDetailState;
 
     useEffect(()=>{
         activeAttributeChecker();
     },[]);
-
-    useEffect(()=>{
-
-    },[])
 
     const activeAttributeChecker = () => {
         if(activeVariant){
@@ -31,14 +31,14 @@ const SelectableAttribute = (props) => {
                 for(let elem of activeVariant.attributes){
                     if(elem.name === pdpStaticData.attributes.COLOR && elem.value === item){
                         props.setActiveColorIndex(index);
-                        setSelectedAttributes(elem.name,item)
+                        setSelectedColorState(elem.name,item)
                     }
                 }
             });
         }
     };
 
-    const setSelectedAttributes = (attr,value) => {
+    const setSelectedColorState = (attr,value) => {
         if(pdpStaticData.attributes.COLOR === attr){
             props.setSelectedColor(value);
         }

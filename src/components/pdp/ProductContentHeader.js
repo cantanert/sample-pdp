@@ -9,11 +9,7 @@ const ProductContentHeader = (props) => {
             <div className="product-interactions">
                 <span className="product-comment-count">
                     <span className="product-overall">
-                        <FaStar/>
-                        <FaStar/>
-                        <FaStar/>
-                        <FaStar/>
-                        <FaStar/>
+                        <FaStar/><FaStar/><FaStar/><FaStar/><FaStar/>
                     </span>
                     23 Yorum
                 </span>
