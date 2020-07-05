@@ -1,10 +1,35 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {connect} from 'react-redux';
-import {setSelectedCountActionCreator} from "../../../redux/actions/pdp/productActions"
+import {
+    setSelectedCountActionCreator,
+    setPiecePriceActionCreator
+} from "../../../redux/actions/pdp/productActions"
 
 const ProductBaremsAndQuantities = (props) => {
-    const { baremList } = props.productDetailState;
+    const { baremList, selectedCount, quantityBaremMin, quantityBaremMax} = props.productDetailState;
 
+    let [baremIndex,setBaremIndex] = useState(null);
+
+    const baremActivater = () => {
+      if(selectedCount){
+          let count = parseInt(selectedCount);
+          baremList.forEach((item,index)=>{
+              if(count >= item.minimumQuantity && selectedCount <= item.maximumQuantity){
+                  setBaremIndex(index);
+                  props.setPiecePrice(item.price);
+              } else if(count < quantityBaremMin || count> quantityBaremMax){
+                  setBaremIndex(null);
+                  props.setPiecePrice(null);
+              }
+          });
+      } else {
+          setBaremIndex(null);
+      }
+    };
+
+    useEffect(()=>{
+        baremActivater();
+    },[selectedCount]);
 
     const inputChangeHandler = (e) => {
         let count;
@@ -17,14 +42,14 @@ const ProductBaremsAndQuantities = (props) => {
         return list.map((item, index)=> {
             if(baremListLength === index + 1){
                 return (
-                    <div className="barem-price" key={index}>
+                    <div className={"barem-price " + (baremIndex === index ? "selected" : " ") } key={index}>
                         <p>{item.minimumQuantity}+</p>
                         <p>{item.price} TL</p>
                     </div>
                 )
             } else {
                 return (
-                    <div className="barem-price" key={index}>
+                    <div className={"barem-price " + (baremIndex === index ? "selected" : " ")} key={index}>
                         <p>{item.minimumQuantity} - {item.maximumQuantity}</p>
                         <p>{item.price} TL</p>
                     </div>
@@ -69,6 +94,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setSelectedCount: (imageURL) => {
             dispatch(setSelectedCountActionCreator(imageURL))
+        },
+        setPiecePrice: (price) => {
+            dispatch(setPiecePriceActionCreator(price));
         }
     }
 };

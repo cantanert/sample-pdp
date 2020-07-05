@@ -11,7 +11,9 @@ import {
     setBaremListActionCreator,
     setInitialVariantActionCreator,
     setActiveVariantActionCreator,
-    setActiveImageActionCreator
+    setActiveImageActionCreator,
+    setQuantityBaremMaxActionCreator,
+    setQuantityBaremMinActionCreator
 } from "../../redux/actions/pdp/productActions";
 
 class ProductDetails extends React.Component{
@@ -27,6 +29,17 @@ class ProductDetails extends React.Component{
         if(!this.props.productDetailState.activeVariant){
             this.props.setActiveVariant(productVariants[0]);
         }
+        this.quantityBaremMinMaxChecker(baremList);
+    };
+
+    quantityBaremMinMaxChecker = (baremList) => {
+        baremList.forEach((item, index)=>{
+            if (index === 0) {
+                this.props.setQuantityBaremMin(item.minimumQuantity);
+            } else if(baremList.length === index+1){
+                this.props.setQuantityBaremMax(item.maximumQuantity);
+            }
+        });
     };
 
 
@@ -72,7 +85,14 @@ const mapDispatchToProps = (dispatch) => {
         },
         setActiveImage: (imageURL) => {
             dispatch(setActiveImageActionCreator(imageURL))
-        }
+        },
+        setQuantityBaremMin: (barem) => {
+            dispatch(setQuantityBaremMinActionCreator(barem))
+        },
+        setQuantityBaremMax: (barem) => {
+            dispatch(setQuantityBaremMaxActionCreator(barem))
+        },
+
     }
 };
 

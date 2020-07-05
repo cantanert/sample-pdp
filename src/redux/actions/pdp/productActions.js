@@ -56,3 +56,24 @@ export const setSelectedCountActionCreator = (imageURL) => {
         payload: imageURL
     }
 };
+
+export const setPiecePriceActionCreator = (price) => {
+    return {
+        type: productStaticData.reduxActions.SET_PIECE_PRICE,
+        payload: price
+    }
+};
+
+export const setQuantityBaremMinActionCreator = (price) => {
+    return {
+        type: productStaticData.reduxActions.SET_QUANTITY_BAREM_MIN,
+        payload: price
+    }
+};
+
+export const setQuantityBaremMaxActionCreator = (price) => {
+    return {
+        type: productStaticData.reduxActions.SET_QUANTITY_BAREM_MAX,
+        payload: price
+    }
+};

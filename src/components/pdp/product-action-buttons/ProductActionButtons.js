@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 
 const ProductActionButtons = (props) => {
 
-    const [isAddToCartEnabled, setIsAddToCartEnabled] = useState(false);
+    let [isAddToCartEnabled, setIsAddToCartEnabled] = useState(false);
 
     const {selectedCount, activeVariant} = props.productDetailState;
     useEffect(()=> {
 
-        (selectedCount && activeVariant) ? setIsAddToCartEnabled(true) : setIsAddToCartEnabled(false);
+        (selectedCount>=100 && activeVariant) ? setIsAddToCartEnabled(true) : setIsAddToCartEnabled(false);
 
     },[selectedCount,activeVariant]);
 

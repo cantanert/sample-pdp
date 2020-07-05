@@ -8,7 +8,10 @@ const initialState = {
     initialVariant: {},
     activeImage: "",
     activeVariant: null,
-    selectedCount: null
+    selectedCount: null,
+    piecePrice: null,
+    quantityBaremMin: null,
+    quantityBaremMax: null
 };
 
 const productDetailReducer = (state = initialState, action) => {
@@ -59,6 +62,24 @@ const productDetailReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 selectedCount: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_PIECE_PRICE:
+            state = {
+                ...state,
+                piecePrice: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_QUANTITY_BAREM_MIN:
+            state = {
+                ...state,
+                quantityBaremMin: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_QUANTITY_BAREM_MAX:
+            state = {
+                ...state,
+                quantityBaremMax: action.payload
             };
             break;
         default:
