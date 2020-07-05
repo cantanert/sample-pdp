@@ -5,8 +5,10 @@ const initialState = {
     selectableAttributes : [],
     productVariants : [],
     baremList: [],
-    activeVariant: {},
-    activeImage: ""
+    initialVariant: {},
+    activeImage: "",
+    activeVariant: null,
+    selectedCount: null
 };
 
 const productDetailReducer = (state = initialState, action) => {
@@ -35,6 +37,12 @@ const productDetailReducer = (state = initialState, action) => {
                 baremList: action.payload
             };
             break;
+        case productDetailsStaticData.reduxActions.SET_INITIAL_VARIANT:
+            state = {
+                ...state,
+                initialVariant: action.payload
+            };
+            break;
         case productDetailsStaticData.reduxActions.SET_ACTIVE_VARIANT:
             state = {
                 ...state,
@@ -45,6 +53,12 @@ const productDetailReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 activeImage: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_SELECTED_COUNT:
+            state = {
+                ...state,
+                selectedCount: action.payload
             };
             break;
         default:

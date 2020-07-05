@@ -6,25 +6,10 @@ const ProductSelectableAttributes = (props) => {
 
     let {selectableAttributes} = props.productDetailState;
 
-    const selectableAttributeOptionRenderer = (options) => {
-      return  options.map((option,index)=>{
-          if(index === 0) {
-              return (
-                  <button className="option selected">{option}</button>
-              )
-          } else {
-              return (
-                  <button className="option">{option}</button>
-              )
-          }
-
-      });
-    };
-
     const selectableAttributeRenderer = (attributes) => {
-        return attributes.map((attr) => {
+        return attributes.map((attr,index) => {
             return (
-                <SelectableAttribute>{attr}</SelectableAttribute>
+                <SelectableAttribute key={index}>{attr}</SelectableAttribute>
             )
         });
     };

@@ -1,10 +1,28 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {connect} from "react-redux"
 
 
 const SelectableAttribute = (props) => {
 
-    const [activeIndex,setActiveIndex] = useState(0);
+    const [activeIndex,setActiveIndex] = useState(null);
 
+    let {activeVariant} = props.productDetailState;
+
+    useEffect(()=>{
+        activeAttributeChecker();
+    },[]);
+
+    const activeAttributeChecker = () => {
+        if(activeVariant){
+            props.children.values.forEach((item,index)=>{
+                for(let elem of activeVariant.attributes){
+                    if(elem.name === props.children.name && elem.value === item){
+                        setActiveIndex(index);
+                    }
+                }
+            });
+        }
+    };
     const optionClickHandler = (index) => {
         setActiveIndex(index);
     };
@@ -14,7 +32,8 @@ const SelectableAttribute = (props) => {
             return (
                 <button
                     className={"option " + (index === activeIndex ? "selected" : "")}
-                    onClick={() => optionClickHandler(index)}>
+                    onClick={() => optionClickHandler(index)}
+                    key={index}>
                     {option}
                 </button>
             );
@@ -33,4 +52,10 @@ const SelectableAttribute = (props) => {
     )
 };
 
-export default SelectableAttribute;
+const mapStateToProps = state => {
+    return {
+        productDetailState : state.productDetailReducer
+    }
+};
+
+export default connect(mapStateToProps)(SelectableAttribute);

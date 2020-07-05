@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from 'react-redux';
+import {setSelectedCountActionCreator} from "../../../redux/actions/pdp/productActions"
 
 const ProductBaremsAndQuantities = (props) => {
     const { baremList } = props.productDetailState;
-    const baremListLength = baremList.length;
 
+
+    const inputChangeHandler = (e) => {
+        let count;
+        (e.target.value) ? count = e.target.value : count = null;
+        props.setSelectedCount(count);
+    };
+
+    const baremListLength = baremList.length;
     const baremPriceRenderer = (list) => {
         return list.map((item, index)=> {
             if(baremListLength === index + 1){
@@ -42,7 +50,7 @@ const ProductBaremsAndQuantities = (props) => {
                     <p>Adet</p>
                 </div>
                 <div className="product-quantity-input">
-                    <input type="text"/>
+                    <input type="number" onChange={(e) => inputChangeHandler(e)}/>
                     <span>Adet</span>
                     <span className="stock-quantity">Stok Adedi : <strong>600</strong></span>
                 </div>
@@ -57,4 +65,13 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(ProductBaremsAndQuantities);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setSelectedCount: (imageURL) => {
+            dispatch(setSelectedCountActionCreator(imageURL))
+        }
+    }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductBaremsAndQuantities);

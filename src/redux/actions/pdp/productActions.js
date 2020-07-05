@@ -29,16 +29,30 @@ export const setBaremListActionCreator = (barems) => {
     }
 };
 
-export const setActiveVariantActionCreator = (variant) => {
+export const setInitialVariantActionCreator = (variant) => {
+    return {
+        type: productStaticData.reduxActions.SET_INITIAL_VARIANT,
+        payload: variant
+    }
+};
+
+export const setActiveVariantActionCreator = (imageURL) => {
     return {
         type: productStaticData.reduxActions.SET_ACTIVE_VARIANT,
-        payload: variant
+        payload: imageURL
     }
 };
 
 export const setActiveImageActionCreator = (imageURL) => {
     return {
         type: productStaticData.reduxActions.SET_ACTIVE_IMAGE,
+        payload: imageURL
+    }
+};
+
+export const setSelectedCountActionCreator = (imageURL) => {
+    return {
+        type: productStaticData.reduxActions.SET_SELECTED_COUNT,
         payload: imageURL
     }
 };

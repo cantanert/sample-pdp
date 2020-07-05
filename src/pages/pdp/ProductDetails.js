@@ -9,6 +9,7 @@ import {
     setSelectableAttributesActionCreator,
     setProductVariantsActionCreator,
     setBaremListActionCreator,
+    setInitialVariantActionCreator,
     setActiveVariantActionCreator,
     setActiveImageActionCreator
 } from "../../redux/actions/pdp/productActions";
@@ -21,8 +22,11 @@ class ProductDetails extends React.Component{
         this.props.setSelectableAttributes(selectableAttributes);
         this.props.setProductVariants(productVariants);
         this.props.setBaremList(baremList);
-        this.props.setActiveVariant(productVariants[0]);
+        this.props.setInitialVariant(productVariants[0]);
         this.props.setActiveImage(productVariants[0].images[0]);
+        if(!this.props.productDetailState.activeVariant){
+            this.props.setActiveVariant(productVariants[0]);
+        }
     };
 
 
@@ -59,6 +63,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setBaremList: (barems) => {
             dispatch(setBaremListActionCreator(barems))
+        },
+        setInitialVariant: (variant) => {
+            dispatch(setInitialVariantActionCreator(variant))
         },
         setActiveVariant: (variant) => {
             dispatch(setActiveVariantActionCreator(variant))
