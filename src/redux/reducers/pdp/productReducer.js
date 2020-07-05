@@ -11,7 +11,12 @@ const initialState = {
     selectedCount: null,
     piecePrice: null,
     quantityBaremMin: null,
-    quantityBaremMax: null
+    quantityBaremMax: null,
+    selectedColor: null,
+    selectedSize: null,
+    availableSizes: [],
+    activeColorIndex: null,
+    activeSizeIndex: null
 };
 
 const productDetailReducer = (state = initialState, action) => {
@@ -80,6 +85,36 @@ const productDetailReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 quantityBaremMax: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_SELECTED_COLOR:
+            state = {
+                ...state,
+                selectedColor: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_SELECTED_SIZE:
+            state = {
+                ...state,
+                selectedSize: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_AVAILABLE_SIZES:
+            state = {
+                ...state,
+                availableSizes: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_ACTIVE_COLOR_INDEX:
+            state = {
+                ...state,
+                activeColorIndex: action.payload
+            };
+            break;
+        case productDetailsStaticData.reduxActions.SET_ACTIVE_SIZE_INDEX:
+            state = {
+                ...state,
+                activeSizeIndex: action.payload
             };
             break;
         default:

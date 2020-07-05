@@ -4,14 +4,14 @@ import {setActiveImageActionCreator, setTitleActionCreator} from "../../../redux
 
 const ProductThumbnailImages = (props) => {
 
-    let {initialVariant} = props.productDetailState;
+    let {activeVariant} = props.productDetailState;
 
     const thumbnailClickHandler = url => {
         props.setActiveImage(url);
     };
 
     const thumbnailImageRenderer = () => {
-        return initialVariant.images.map((url,index)=>{
+        return activeVariant.images.map((url,index)=>{
             return (
                 <div className="thumbnail" key={index}>
                     <img src={url} width="100%" onClick={() => thumbnailClickHandler(url)}/>

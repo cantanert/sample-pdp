@@ -13,8 +13,10 @@ import {
     setActiveVariantActionCreator,
     setActiveImageActionCreator,
     setQuantityBaremMaxActionCreator,
-    setQuantityBaremMinActionCreator
+    setQuantityBaremMinActionCreator,
+    setAvailableSizesActionCreator
 } from "../../redux/actions/pdp/productActions";
+import pdpStaticData from "../../statics/product-detail-static-data";
 
 class ProductDetails extends React.Component{
 
@@ -30,6 +32,25 @@ class ProductDetails extends React.Component{
             this.props.setActiveVariant(productVariants[0]);
         }
         this.quantityBaremMinMaxChecker(baremList);
+        let selectedColorsVariants = [];
+        productVariants.forEach((variant) => {
+            for (let attribute of variant.attributes){
+                if (attribute.name === pdpStaticData.attributes.COLOR && attribute.value === productVariants[0].attributes[1].value){
+                    selectedColorsVariants.push(variant);
+                }
+            }
+        });
+
+        let availableSizes = [];
+        for (let element of selectedColorsVariants){
+            for (let attr of  element.attributes){
+                if(attr.name === pdpStaticData.attributes.SIZE){
+                    availableSizes.push(attr.value);
+                }
+            }
+        }
+
+        this.props.setAvailableSizes(availableSizes);
     };
 
     quantityBaremMinMaxChecker = (baremList) => {
@@ -92,6 +113,9 @@ const mapDispatchToProps = (dispatch) => {
         setQuantityBaremMax: (barem) => {
             dispatch(setQuantityBaremMaxActionCreator(barem))
         },
+        setAvailableSizes: (sizes) => {
+            dispatch(setAvailableSizesActionCreator(sizes))
+        }
 
     }
 };

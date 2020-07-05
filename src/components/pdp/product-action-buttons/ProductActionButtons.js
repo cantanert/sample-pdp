@@ -5,11 +5,11 @@ const ProductActionButtons = (props) => {
 
     let [isAddToCartEnabled, setIsAddToCartEnabled] = useState(false);
 
-    const {selectedCount, activeVariant} = props.productDetailState;
+    const {selectedCount, activeVariant, quantityBaremMax, quantityBaremMin} = props.productDetailState;
     useEffect(()=> {
-
-        (selectedCount>=100 && activeVariant) ? setIsAddToCartEnabled(true) : setIsAddToCartEnabled(false);
-
+        (selectedCount < quantityBaremMin || selectedCount > quantityBaremMax || !activeVariant)
+            ? setIsAddToCartEnabled(false)
+            : setIsAddToCartEnabled(true);
     },[selectedCount,activeVariant]);
 
     return (
