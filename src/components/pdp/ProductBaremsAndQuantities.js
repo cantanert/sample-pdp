@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {
     setSelectedCountActionCreator,
     setPiecePriceActionCreator
-} from "../../../redux/actions/pdp/productActions"
+} from "../../redux/actions/pdp/productActions"
 
 const ProductBaremsAndQuantities = (props) => {
     const { baremList, selectedCount, quantityBaremMin, quantityBaremMax} = props.productDetailState;

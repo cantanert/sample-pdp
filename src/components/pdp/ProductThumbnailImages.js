@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux"
-import {setActiveImageActionCreator, setTitleActionCreator} from "../../../redux/actions/pdp/productActions"
+import {setActiveImageActionCreator, setTitleActionCreator} from "../../redux/actions/pdp/productActions"
 
 const ProductThumbnailImages = (props) => {
 

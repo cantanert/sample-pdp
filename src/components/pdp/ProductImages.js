@@ -1,6 +1,6 @@
 import React from "react";
-import ProductMainImage from "../product-main-image/ProductMainImage";
-import ProductThumbnailImages from "../product-thumbnail-images/ProductThumbnailImages";
+import ProductMainImage from "./ProductMainImage";
+import ProductThumbnailImages from "./ProductThumbnailImages";
 
 const ProductImages = () => {
     return(

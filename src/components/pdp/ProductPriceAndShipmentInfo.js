@@ -1,6 +1,6 @@
 import React from "react";
 import {FiTruck} from "react-icons/fi"
-import ProductActionButtons from "../product-action-buttons/ProductActionButtons";
+import ProductActionButtons from "./ProductActionButtons";
 import {connect} from "react-redux";
 
 const ProductPriceAndShipmentInfo = (props) => {

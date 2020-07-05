@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {connect} from "react-redux";
-import pdpStaticData from "../../../statics/product-detail-static-data";
+import pdpStaticData from "../../statics/product-detail-static-data";
 import {
     setSelectedSizeActionCreator,
     setSelectedColorActionCreator,
@@ -9,7 +9,7 @@ import {
     setActiveColorIndexActionCreator,
     setActiveVariantActionCreator,
     setActiveImageActionCreator
-} from "../../../redux/actions/pdp/productActions";
+} from "../../redux/actions/pdp/productActions";
 
 
 const SelectableAttribute = (props) => {

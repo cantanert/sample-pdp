@@ -1,0 +1,21 @@
+@import "product-barems-and-quantity"
+@import "product-content-header"
+@import "product-images-wrapper"
+@import "product-min-max-infos"
+@import "product-price-and-shipment-info"
+@import "product-selectable-attributes"
+
+.product-details-wrapper
+  display: flex
+  min-height: 100vh
+  align-items: center
+  .product-images-wrapper, .product-content-wrapper
+    width: 100%
+    box-sizing: border-box
+
+@media screen and (max-width: $width-small-max)
+  .product-details-wrapper
+    flex-direction: column
+    margin: 20px 0
+    .product-content-header
+      margin-top: 15px

@@ -1,0 +1,56 @@
+.product-details-wrapper
+  .product-content-wrapper
+    .product-price-and-shipment-info
+      display: flex
+      padding: 0 15px
+      .product-total-price-title
+        font-size: 14px
+        flex: 1
+        position: relative
+        p:after
+          content: ":"
+          position: absolute
+          right: 0
+      .product-total-price-wrapper
+        display: flex
+        flex: 4
+        flex-direction: column
+        .product-price-and-shipment
+          font-size: 14px
+          padding-left: 10px
+          .price
+            font-size: 25px
+            font-weight: 600
+            margin: 10px 0
+          .shipment
+            p
+              margin: 0
+            .shipment-type
+              color: $theme-blue
+            .truck-icon
+              vertical-align: middle
+        .product-action-buttons-wrapper
+          margin: 10px 0 0 10px
+          .product-action-buttons
+            display: flex
+            .submit-button
+              button
+                height: 55px
+                width: 200px
+                background-color: $theme-yellow
+                color: #fff
+                border-radius: 4px
+                border: unset
+                text-transform: uppercase
+                font-weight: 600
+                font-size: 16px
+                &[disabled]
+                  background-color: #aeaeae
+                  opacity: 0.6
+            .payment-options
+              color: $theme-blue
+              display: flex
+              justify-content: center
+              align-items: center
+              margin-left: 10px
+              font-size: 14px

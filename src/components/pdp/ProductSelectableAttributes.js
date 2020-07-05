@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
-import SelectableAttribute from "../selectable-attribute/SelectableAttribute";
+import SelectableAttribute from "./SelectableAttribute";
 
 const ProductSelectableAttributes = (props) => {
 

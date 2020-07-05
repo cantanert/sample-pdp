@@ -1,0 +1,48 @@
+.product-details-wrapper
+  .product-content-wrapper
+    .product-selectable-attributes
+      padding: 0 15px
+      .selectable-attribute
+        display: flex
+        align-items: center
+        margin-top: 20px
+        .attribute-name
+          flex: 1
+          display: flex
+          align-items: center
+          position: relative
+          font-size: 14px
+          span:after
+            content: ":"
+            position: absolute
+            right: 0
+        .attribute-options
+          flex: 4
+          display: flex
+          padding-left: 5px
+          .option
+            display: flex
+            flex-direction: column
+            flex-basis: 33%
+            justify-content: center
+            align-items: center
+            border: 1px solid $theme-light-gray
+            border-radius: 2px
+            margin-left: 5px
+            padding: 5px
+            height: 45px
+            background-color: transparent
+            cursor: pointer
+            &[disabled]
+              opacity: 0.4
+              &:hover
+                background-color: transparent
+            &:hover
+              background-color: #e7e7e7
+            &.selected
+              border: 3px solid $theme-dark-gray
+            p
+              margin: 0
+              font-size: 13px
+              color: #000
+              font-weight: 500

@@ -1,6 +1,6 @@
 import React from "react";
-import ProductImages from "../../components/pdp/product-images/ProductImages";
-import ProductContent from "../../components/pdp/product-content/ProductContent";
+import ProductImages from "../../components/pdp/ProductImages";
+import ProductContent from "../../components/pdp/ProductContent";
 import mockedProductResponse from "../../statics/mocked-product-response";
 import {connect} from 'react-redux';
 
