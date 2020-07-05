@@ -5,18 +5,26 @@ const ProductActionButtons = (props) => {
 
     let [isAddToCartEnabled, setIsAddToCartEnabled] = useState(false);
 
-    const {selectedCount, activeVariant, quantityBaremMax, quantityBaremMin} = props.productDetailState;
+    const {selectedCount, activeVariant, quantityBaremMax, quantityBaremMin, selectedSize, piecePrice} = props.productDetailState;
     useEffect(()=> {
-        (selectedCount < quantityBaremMin || selectedCount > quantityBaremMax || !activeVariant)
+        (selectedCount < quantityBaremMin || selectedCount > quantityBaremMax || !activeVariant || !selectedSize )
             ? setIsAddToCartEnabled(false)
             : setIsAddToCartEnabled(true);
-    },[selectedCount,activeVariant]);
+    },[selectedCount,activeVariant,selectedSize]);
+
+    const addToCartClickHandler = () => {
+        console.log("Selected Barem Price : " + piecePrice);
+        console.log("Selected Variant ID : " + activeVariant.id);
+        console.log("Selected Variant Data : ");
+        console.log(activeVariant);
+    };
 
     return (
         <div className="product-action-buttons">
             <div className="submit-button">
                 <button
-                    disabled={ !isAddToCartEnabled }>
+                    disabled={ !isAddToCartEnabled }
+                    onClick={() => addToCartClickHandler()}>
                     Sepete Ekle
                 </button>
             </div>

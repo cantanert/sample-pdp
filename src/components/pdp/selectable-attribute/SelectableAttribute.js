@@ -6,14 +6,16 @@ import {
     setSelectedColorActionCreator,
     setAvailableSizesActionCreator,
     setActiveSizeIndexActionCreator,
-    setActiveColorIndexActionCreator
+    setActiveColorIndexActionCreator,
+    setActiveVariantActionCreator,
+    setActiveImageActionCreator
 } from "../../../redux/actions/pdp/productActions";
 
 
 const SelectableAttribute = (props) => {
 
 
-    let {activeVariant, productVariants, availableSizes, activeColorIndex, activeSizeIndex } = props.productDetailState;
+    let {activeVariant, productVariants, availableSizes, activeColorIndex, activeSizeIndex, selectedColor, selectedSize } = props.productDetailState;
 
     useEffect(()=>{
         activeAttributeChecker();
@@ -27,7 +29,7 @@ const SelectableAttribute = (props) => {
         if(activeVariant){
             props.children.values.forEach((item,index)=>{
                 for(let elem of activeVariant.attributes){
-                    if(elem.name === props.children.name && elem.value === item){
+                    if(elem.name === pdpStaticData.attributes.COLOR && elem.value === item){
                         props.setActiveColorIndex(index);
                         setSelectedAttributes(elem.name,item)
                     }
@@ -80,10 +82,27 @@ const SelectableAttribute = (props) => {
             props.setSelectedSize(event.target.textContent);
         }
         props.setActiveSizeIndex(index);
+        updateActiveVariant(event.target.textContent);
     };
 
-    const isDisabled = (option) => {
-        return !availableSizes.includes(option);
+    const updateActiveVariant = (size) => {
+        let colorAttributes = [];
+        productVariants.forEach((variant) => {
+            for (let attribute of variant.attributes) {
+                if (attribute.name === pdpStaticData.attributes.COLOR && attribute.value === selectedColor) {
+                    colorAttributes.push(variant);
+                }
+            }
+        });
+
+        for (let variant of colorAttributes){
+            for(let attr of variant.attributes){
+                if(attr.name === pdpStaticData.attributes.SIZE && attr.value === size){
+                    props.setActiveVariant(variant);
+                    props.setActiveImage(variant.images[0]);
+                }
+            }
+        }
     };
 
     const selectableAttributeOptionRenderer = (attribute,options) => {
@@ -150,7 +169,13 @@ const mapDispatchToProps = dispatch => {
         },
         setActiveSizeIndex: (index) => {
             dispatch(setActiveSizeIndexActionCreator(index))
-        }
+        },
+        setActiveVariant: (variant) => {
+            dispatch(setActiveVariantActionCreator(variant));
+        },
+        setActiveImage: (imageURL) => {
+            dispatch(setActiveImageActionCreator(imageURL))
+        },
     }
 }
 

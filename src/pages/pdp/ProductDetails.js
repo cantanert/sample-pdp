@@ -14,14 +14,17 @@ import {
     setActiveImageActionCreator,
     setQuantityBaremMaxActionCreator,
     setQuantityBaremMinActionCreator,
-    setAvailableSizesActionCreator
+    setAvailableSizesActionCreator,
+    setPriceBaremMax,
+    setPriceBaremMin,
+    setMinSaleQuantity
 } from "../../redux/actions/pdp/productActions";
 import pdpStaticData from "../../statics/product-detail-static-data";
 
 class ProductDetails extends React.Component{
 
     getMockedResponseAndInitializeState = () => {
-        let {productTitle,selectableAttributes,productVariants,baremList} = mockedProductResponse;
+        let {productTitle,selectableAttributes,productVariants,baremList,activeVariant} = mockedProductResponse;
         this.props.setTitle(productTitle);
         this.props.setSelectableAttributes(selectableAttributes);
         this.props.setProductVariants(productVariants);
@@ -57,8 +60,11 @@ class ProductDetails extends React.Component{
         baremList.forEach((item, index)=>{
             if (index === 0) {
                 this.props.setQuantityBaremMin(item.minimumQuantity);
+                this.props.setPriceBaremMin(item.price);
+                this.props.setMinSaleQuantity(item.minimumQuantity);
             } else if(baremList.length === index+1){
                 this.props.setQuantityBaremMax(item.maximumQuantity);
+                this.props.setPriceBaremMax(item.price)
             }
         });
     };
@@ -115,7 +121,17 @@ const mapDispatchToProps = (dispatch) => {
         },
         setAvailableSizes: (sizes) => {
             dispatch(setAvailableSizesActionCreator(sizes))
+        },
+        setPriceBaremMin: price => {
+            dispatch(setPriceBaremMin(price))
+        },
+        setPriceBaremMax: price => {
+            dispatch(setPriceBaremMax(price))
+        },
+        setMinSaleQuantity: (quantity) => {
+            dispatch(setMinSaleQuantity(quantity))
         }
+
 
     }
 };

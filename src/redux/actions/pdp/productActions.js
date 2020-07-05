@@ -112,3 +112,24 @@ export const setActiveColorIndexActionCreator = (color) => {
         payload: color
     }
 };
+
+export const setPriceBaremMin = (price) => {
+    return {
+        type: productStaticData.reduxActions.SET_PRICE_BAREM_MIN,
+        payload: price
+    }
+};
+
+export const setPriceBaremMax = (price) => {
+    return {
+        type: productStaticData.reduxActions.SET_PRICE_BAREM_MAX,
+        payload: price
+    }
+};
+
+export const setMinSaleQuantity = (quantity) => {
+    return {
+        type: productStaticData.reduxActions.SET_MIN_SALE_QUANTITY,
+        payload: quantity
+    }
+};
