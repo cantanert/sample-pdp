@@ -8,33 +8,6 @@ export const setTitleActionCreator = (title) => {
     }
 };
 
-export const setSelectableAttributesActionCreator = (attributes) => {
-    return {
-        type: productStaticData.reduxActions.SET_SELECTABLE_ATTRIBUTES,
-        payload: attributes
-    }
-};
-
-export const setProductVariantsActionCreator = (variants) => {
-    return {
-        type: productStaticData.reduxActions.SET_PRODUCT_VARIANTS,
-        payload: variants
-    }
-};
-
-export const setBaremListActionCreator = (barems) => {
-    return {
-        type: productStaticData.reduxActions.SET_BAREM_LIST,
-        payload: barems
-    }
-};
-
-export const setInitialVariantActionCreator = (variant) => {
-    return {
-        type: productStaticData.reduxActions.SET_INITIAL_VARIANT,
-        payload: variant
-    }
-};
 
 export const setActiveVariantActionCreator = (imageURL) => {
     return {
@@ -78,19 +51,6 @@ export const setPiecePriceActionCreator = (price) => {
     }
 };
 
-export const setQuantityBaremMinActionCreator = (price) => {
-    return {
-        type: productStaticData.reduxActions.SET_QUANTITY_BAREM_MIN,
-        payload: price
-    }
-};
-
-export const setQuantityBaremMaxActionCreator = (price) => {
-    return {
-        type: productStaticData.reduxActions.SET_QUANTITY_BAREM_MAX,
-        payload: price
-    }
-};
 
 export const setAvailableSizesActionCreator = (sizes) => {
     return {
@@ -110,26 +70,5 @@ export const setActiveColorIndexActionCreator = (color) => {
     return {
         type: productStaticData.reduxActions.SET_ACTIVE_COLOR_INDEX,
         payload: color
-    }
-};
-
-export const setPriceBaremMin = (price) => {
-    return {
-        type: productStaticData.reduxActions.SET_PRICE_BAREM_MIN,
-        payload: price
-    }
-};
-
-export const setPriceBaremMax = (price) => {
-    return {
-        type: productStaticData.reduxActions.SET_PRICE_BAREM_MAX,
-        payload: price
-    }
-};
-
-export const setMinSaleQuantity = (quantity) => {
-    return {
-        type: productStaticData.reduxActions.SET_MIN_SALE_QUANTITY,
-        payload: quantity
     }
 };
